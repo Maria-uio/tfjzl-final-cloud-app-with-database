@@ -98,7 +98,7 @@ class Question(models.Model):
     question_text = models.CharField(max_length=200)
     grade = models.IntegerField(default=50)
 
-    def _str_(self):
+    def __str__(self):
         return "Question: " + self.question_text
 
     # method to calculate if the learner gets the score of the question
@@ -116,7 +116,7 @@ class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
     is_correct = models.BooleanField(default=False)
 
-    def _str_(self):
+    def __str__(self):
         return "Choice: " + self.choice_text
 
 
@@ -124,5 +124,5 @@ class Submission(models.Model):
     enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
     choices = models.ManyToManyField(Choice)
 
-    def _str_(self):
+    def __str__(self):
         return "Submission " + str(self.id) + " - " + str(self.enrollment.user.username)
