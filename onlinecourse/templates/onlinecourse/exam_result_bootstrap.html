@@ -55,18 +55,18 @@
         {% for question in course.question_set.all %}
         <div class="card mt-2">
             <div class="card-header">
-                <h5 class="mb-0">{{ question.content }}</h5>
+                <h5 class="mb-0">{{ question.question_text }}</h5>
             </div>
             <div class="card-body">
                 {% for choice in question.choice_set.all %}
                     {% if choice.is_correct and choice.id in selected_ids %}
-                    <div class="text-success">&#10004; Correct answer: {{ choice.content }}</div>
+                    <div class="text-success">&#10004; Correct answer: {{ choice.choice_text }}</div>
                     {% elif choice.is_correct %}
-                    <div class="text-warning">&#9888; Not selected (was correct): {{ choice.content }}</div>
+                    <div class="text-warning">&#9888; Not selected (was correct): {{ choice.choice_text }}</div>
                     {% elif choice.id in selected_ids %}
-                    <div class="text-danger">&#10008; Wrong answer: {{ choice.content }}</div>
+                    <div class="text-danger">&#10008; Wrong answer: {{ choice.choice_text }}</div>
                     {% else %}
-                    <div class="text-muted">{{ choice.content }}</div>
+                    <div class="text-muted">{{ choice.choice_text }}</div>
                     {% endif %}
                 {% endfor %}
             </div>
